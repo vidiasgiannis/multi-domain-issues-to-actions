@@ -1,3 +1,3 @@
 .PHONY: demo
 demo:
-	jupyter notebook notebooks/presentation.ipynb
+	jupyter notebook notebooks/app.ipynb
