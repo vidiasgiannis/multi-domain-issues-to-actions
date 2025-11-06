@@ -1,0 +1,18 @@
+data:
+  path: data/sample_issues.csv
+  source_domain: Retail
+  target_domain: Fintech
+
+models:
+  embedder: all-MiniLM-L6-v2
+  knn_k: 3
+  tfidf:
+    ngram_min: 1
+    ngram_max: 2
+    min_df: 2
+
+rag:
+  top_k: 2
+
+eval:
+  random_seed: 42

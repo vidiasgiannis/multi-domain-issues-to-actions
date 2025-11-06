@@ -1,0 +1,4 @@
+Runbook: Refunds Backlog
+- Symptom: refunds stuck >24h
+- Checks: gateway status, worker throughput, DLQ
+- Actions: scale workers, reduce batch, requeue stuck items

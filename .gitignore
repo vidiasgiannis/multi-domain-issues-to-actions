@@ -1,0 +1,82 @@
+# --- Secrets / config (DO NOT COMMIT) ---
+.env
+*.env
+
+# --- Python / build ---
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+*.egg-info/
+dist/
+build/
+*.log
+
+# --- Virtual environments ---
+.venv/
+venv/
+env/
+ENV/
+
+# --- Jupyter ---
+.ipynb_checkpoints/
+**/.ipynb_checkpoints/
+.profile
+jupyter_notebook_config.py
+
+# --- OS / Editor junk ---
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.code-workspace
+
+# --- Data & cache (keep small CSVs if you want; adjust as needed) ---
+# If you want to KEEP your sample_issues.csv in git, remove this next line:
+data/*.csv
+
+# Always ignore big/raw data and generated indices
+data/**/*.parquet
+data/**/*.feather
+data/**/*.jsonl
+data/**/*.pkl
+data/**/*.bin
+data/**/*.npy
+data/**/*.pt
+data/**/*.idx
+data/**/*.faiss
+data/**/cache/
+cache/
+.tmp/
+tmp/
+
+# Sentence-Transformers / HF caches
+~/.cache/
+.cache/
+**/.cache/
+**/sentence_transformers/*
+**/huggingface/*
+
+# --- Reports / artifacts ---
+reports/
+artifacts/
+outputs/
+figures/
+*.png
+*.svg
+*.pdf
+
+# --- Checkpoints / models ---
+checkpoints/
+models/
+*.ckpt
+*.onnx
+*.pb
+*.tflite
+
+# --- Notebook exports ---
+*.html
+*.md
+*.pptx
+*.pdf
