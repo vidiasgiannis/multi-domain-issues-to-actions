@@ -1,3 +1,6 @@
+
+# TF-IDF + Logistic Regression baseline model training
+
 from sklearn.pipeline import Pipeline
 from sklearn.linear_model import LogisticRegression
 from sklearn.feature_extraction.text import TfidfVectorizer
