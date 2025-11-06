@@ -69,7 +69,6 @@ figures/
 
 # --- Checkpoints / models ---
 checkpoints/
-models/
 *.ckpt
 *.onnx
 *.pb
