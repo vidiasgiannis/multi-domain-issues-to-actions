@@ -8,12 +8,11 @@ import pandas as pd
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import classification_report, f1_score
 from sentence_transformers import SentenceTransformer
-
 from src.models.train_baseline import train_baseline
 from src.models.train_svm import train_svm
 from src.models.train_embed_knn import train_embed_knn
 from src.models.train_embed_lr import run_embed_lr
-
+from src.models.train_openai_embed_knn import run_openai_embed_knn
 
 def run_evaluation(cfg):
     # 1️ Load data
@@ -59,13 +58,25 @@ def run_evaluation(cfg):
     timings["SBERT+kNN"] = end - start
 
     # 5️5 SBERT + Logistic Regression
-    print("\n▶ Training SBERT + Logistic Regression...")
+    print("\n Training SBERT + Logistic Regression...")
     start = time.time()
     f1_embed_lr = run_embed_lr(cfg["data"]["path"], cfg["models"]["embedder"])
     end = time.time()
     results["SBERT+LR"] = f1_embed_lr
     timings["SBERT+LR"] = end - start
 
+    # 6️ Azure OpenAI Embeddings + kNN
+    print("\n Training Azure OpenAI Embeddings + kNN...")
+    start = time.time()
+    res_openai_knn = run_openai_embed_knn(
+        data_path=cfg["data"]["path"],
+        k=cfg["models"]["knn_k"],
+        test_size=0.2,
+        random_state=cfg["eval"]["random_seed"]
+    )
+    end = time.time()
+    results["Azure+kNN"] = res_openai_knn["f1"]
+    timings["Azure+kNN"] = res_openai_knn["time"]
     # 6️ Report results
     print("\n=== BENCHMARK RESULTS ===")
     df_results = pd.DataFrame({
