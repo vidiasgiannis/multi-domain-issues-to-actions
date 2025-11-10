@@ -49,7 +49,8 @@ This project automates that process through classification and analytics.
 | TF-IDF + Logistic Regression | Classical ML | Lightweight, interpretable baseline |
 | TF-IDF + SVM | Classical ML | Strong linear baseline often used in text classification |
 | SBERT + kNN | Semantic Embedding | Meaning-based nearest-neighbor classification |
-| Azure OpenAI Embeddings + kNN | Cloud Embedding | LLM-based semantic approach |
+| Azure OpenAI Embeddings + kNN | OpenAI Embedding | LLM-based semantic approach |
+| TF-IDF + XGBoost | Classical | Non-linear baseline used in text classification
 | *(Optional)* Feedforward Neural Network | Deep Learning | For feature-based comparisons |
 
 ---
