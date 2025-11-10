@@ -39,24 +39,22 @@ C) Configuration
 ------------------------------------------------------------
 Edit configs/config.yaml (defaults shown):
 
-  data:
-    path: data/sample_issues.csv
-    source_domain: Retail
-    target_domain: Fintech
+data:
+  path: ../data/sample_issues.csv   # Path to the synthetic dataset
 
-  models:
-    embedder: all-MiniLM-L6-v2
-    knn_k: 3
-    tfidf:
-      ngram_min: 1
-      ngram_max: 2
-      min_df: 2
+models:
+  tfidf:
+    ngram_min: 1                 
+    ngram_max: 2                 
+    min_df: 2                    
+  embedder: all-MiniLM-L6-v2     
+  knn_k: 3                                         
 
-  rag:
-    top_k: 2
+eval:
+  random_seed: 42                
+  test_size: 0.2                 
+  metrics: ["accuracy", "f1", "precision", "recall"]
 
-  eval:
-    random_seed: 42
 
 Common tweaks:
 - Change source_domain / target_domain to explore different shifts

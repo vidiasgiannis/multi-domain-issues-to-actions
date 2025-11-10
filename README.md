@@ -1,118 +1,106 @@
-# Multi-Domain Issues-to-Actions
-### An Automated Agent for Cross-Domain Issue Classification and Knowledge-Augmented Action Generation
+# Multi-Domain Issue Classification and Decision Support
+### A Generative AI–Powered Analytical System for Multi-Department Issue Understanding
 
 ---
 
 ## 1. Purpose
-The goal of this project is to **transform unstructured issue reports into data-driven actions** using a mix of traditional analytics, semantic modeling, and generative AI.
-It demonstrates how a data scientist can build an **end-to-end decision-support system** that classifies issues, retrieves relevant knowledge, and recommends next steps automatically.
+This project demonstrates an **end-to-end decision-support pipeline**
+that classifies textual issue reports from different business departments and analyzes their patterns.
+
+The system combines **traditional machine learning**, **semantic embeddings**, and **Generative AI**
+to benchmark models and explore how language representations affect performance across domains.
 
 ---
 
 ## 2. Scope of the Project
 
 ### Problem Overview
-Organizations receive thousands of textual incident reports or support tickets every day.
-Manually triaging and responding to them is time-consuming and inconsistent.
+Organizations receive hundreds of textual issue reports daily —
+ranging from IT incidents to analytics errors or marketing performance drops.
 
-This project demonstrates how to:
-- Analyze text issues from multiple domains (Retail, Fintech, etc.)
-- Detect patterns and classify issues automatically
-- Retrieve relevant documentation or procedures
-- Generate recommended actions using Generative AI (RAG)
+Manually routing and prioritizing them is slow and inconsistent.
+This project automates that process through classification and analytics.
+
+### What the system demonstrates
+- Analyze and visualize issue distributions and priorities
+- Clean and preprocess unstructured text
+- Benchmark multiple classification models
+- Compare **semantic**, **statistical**, and **LLM-based** representations
+- Generate analytical insights and improvement directions
 
 ---
 
-## 3. What the System Does
+## 3. System Workflow
 
-| Stage | Description | Outcome |
-|--------|--------------|----------|
-| **Data Understanding** | Load and explore the dataset of issues | Identify domain and label distribution |
-| **Preprocessing** | Clean text, build TF-IDF and embedding features | Structured numerical data |
-| **Model Training** | Train and benchmark multiple models | Compare speed and accuracy |
-| **Semantic Search (RAG)** | Retrieve top-k relevant docs using embeddings | Provide context for generation |
-| **Action Generation** | Use GPT-based model to summarize next steps | Produce human-readable recommendations |
+| Stage | Description | Output |
+|--------|--------------|---------|
+| **Data Understanding** | Load and explore synthetic issue dataset | Department & priority distributions |
+| **Preprocessing** | Normalize and clean text | Ready-to-train corpus |
+| **Model Training** | Fit multiple models (TF-IDF, SBERT, Azure Embeddings) | Classification results |
+| **Evaluation** | Compare F1, accuracy, and confusion matrices | Ranked performance table |
+| **Interpretation** | Analyze feature importance & embeddings | Explainable insights |
 
 ---
 
 ## 4. Models Included
 
-| Model | Technique | Purpose |
-|--------|------------|----------|
-| TF-IDF + Logistic Regression | Classical ML | Interpretable baseline |
-| TF-IDF + SVM | Classical ML | Stronger linear model |
-| SBERT + kNN | Semantic embeddings | Meaning-based classification |
-| SBERT + Logistic Regression | Semantic + efficient | Embedding-driven classifier |
-| Azure OpenAI + kNN | Cloud embeddings | Zero-training semantic approach |
-| *(Optional)* GPT-4 Zero-Shot | Large Language Model | Direct classification |
+| Model | Type | Description |
+|--------|------|-------------|
+| TF-IDF + Logistic Regression | Classical ML | Lightweight, interpretable baseline |
+| TF-IDF + SVM | Classical ML | Strong linear baseline often used in text classification |
+| SBERT + kNN | Semantic Embedding | Meaning-based nearest-neighbor classification |
+| Azure OpenAI Embeddings + kNN | Cloud Embedding | LLM-based semantic approach |
+| *(Optional)* Feedforward Neural Network | Deep Learning | For feature-based comparisons |
 
 ---
 
 ## 5. Analytical Focus
-This project focuses on **analytical reasoning** and **data understanding**, not just modeling.
+The notebook highlights analytical reasoning and data exploration rather than only modeling.
 
-Key analyses include:
-- Class imbalance and label distribution
-- Key TF-IDF terms per category
-- Runtime vs. accuracy trade-offs
-- Model explainability and insights
-- Semantic similarity evaluation
+Key aspects:
+- Class balance and diversity assessment
+- Text length and lexical variability
+- Model performance comparison (speed vs. accuracy)
+- Semantic variance and embedding-space visualization
+- Impact of embeddings vs. traditional TF-IDF features
 
 ---
 
-## 6. Generative AI Integration (RAG)
-The **Retrieval-Augmented Generation (RAG)** module retrieves the **top-k relevant documents** based on cosine similarity of embeddings and feeds them into a GPT-based model.
+## 6. Generative AI Integration (as future direction)
+Although this version focuses on classification and analytics,
+future extensions may include **Retrieval-Augmented Generation (RAG)**
+to produce context-aware action recommendations from classified issues.
 
-This ensures that generated recommendations are **context-aware**, **grounded**, and **actionable**.
-
-**Example flow:**
+**Potential flow:**
 ```
-Issue → Embedding → Retrieve top-2 KB snippets → GPT generates recommended actions
+Issue → Embedding → Retrieve similar issues → Generate recommended next steps
 ```
 
 ---
 
 ## 7. Business Impact
-- Faster response time — automated classification and suggested actions
-- Consistent support — knowledge-based recommendations
-- Reusable pipeline — adaptable across business domains
-- Scalable — ready for enterprise deployment with Azure OpenAI
+- **Automation:** Reduces manual effort in issue triaging
+- **Transparency:** Analytical breakdowns for each model
+- **Scalability:** Works across departments and industries
+- **Extensibility:** Can evolve into a full RAG or agent-based support system
 
 ---
 
-## 8. Presentation & Demonstration
-The demo includes:
-1. Data overview and label distribution
-2. Benchmark comparison of all models
-3. Example RAG workflow (issue → retrieval → actions)
-4. Analytical insights (runtime, accuracy, interpretability)
-5. Discussion of improvements (FAISS, fine-tuning, feedback loops)
-
----
-
-## 9. Repository Structure
+## 8. Repository Structure
 ```
 multi-domain-issues-to-actions/
- ┣ data/                # Sample issues & KB documents
- ┣ src/
- ┃ ┣ features/          # Text preprocessing & embeddings
- ┃ ┣ models/            # Training & evaluation scripts
- ┃ ┣ rag/               # Retrieval and action generation
- ┣ notebooks/           # Presentation notebooks
- ┣ configs/             # Configuration files
- ┣ README.md            # Project overview
- ┣ setup.md             # Installation and environment guide
+ ┣ data/                # Synthetic issue dataset
+ ┣ src/                 # Scripts for data, features, and models
+ ┣ notebooks/           # Main presentation notebook (app.ipynb)
+ ┣ configs/             # Config and experiment parameters
+ ┣ setup.md             # Environment setup guide
+ ┣ README.md            # Project overview (this file)
 ```
 
 ---
 
-## 10. Future Work
-- Implement FAISS for faster semantic retrieval
-- Add Streamlit dashboard for interactive demos
-- Fine-tune small transformer for domain-specific adaptation
-- Introduce feedback loop for continuous learning
-
+## 9. Future Work
+- Add FAISS for scalable semantic retrieval
+- Extend to RAG-based action generation
 ---
 
-## 11. Key Takeaway
-This project bridges **data science** and **generative AI** — showing how structured analytics and LLM reasoning can work together to convert raw text issues into intelligent, explainable actions.

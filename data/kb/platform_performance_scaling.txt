@@ -1,4 +1,0 @@
-Guide: Performance & Scaling
-- Targets: checkout p95 < 2s, auth < 500ms
-- Cache hit >85%; prewarm hot keys
-- Scale replicas; respect DB pool limits

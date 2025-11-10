@@ -1,0 +1,2 @@
+accuracy,precision,recall,f1_macro,model,time_sec
+0.785,0.7902892258956332,0.7849999999999999,0.7854666883504093,SBERT_KNN,2.91

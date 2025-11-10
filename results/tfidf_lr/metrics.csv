@@ -1,0 +1,2 @@
+accuracy,precision,recall,f1_macro,model,time_sec
+0.845,0.8504714036451843,0.845,0.8428963781632319,TFIDF_LR,2.23

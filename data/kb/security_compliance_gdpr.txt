@@ -1,4 +1,0 @@
-Memo: GDPR Deletion
-- TTL enforcement for EU tenants
-- PII redaction in logs (30 days)
-- Exports exclude phone numbers without consent

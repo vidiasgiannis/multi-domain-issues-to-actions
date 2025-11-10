@@ -1,18 +1,15 @@
 data:
-  path: data/sample_issues.csv
-  source_domain: Retail
-  target_domain: Fintech
+  path: ../data/sample_issues.csv   # Path to the synthetic dataset
 
 models:
-  embedder: all-MiniLM-L6-v2
-  knn_k: 3
   tfidf:
-    ngram_min: 1
-    ngram_max: 2
-    min_df: 2
-
-rag:
-  top_k: 2
+    ngram_min: 1                 # Minimum n-gram size for TF-IDF
+    ngram_max: 2                 # Maximum n-gram size for TF-IDF
+    min_df: 2                    # Minimum document frequency
+  embedder: all-MiniLM-L6-v2     # Default SentenceTransformer model
+  knn_k: 3                       # Number of neighbors for kNN                   
 
 eval:
-  random_seed: 42
+  random_seed: 42                # Reproducibility
+  test_size: 0.2                 # Train/test split ratio
+  metrics: ["accuracy", "f1", "precision", "recall"]

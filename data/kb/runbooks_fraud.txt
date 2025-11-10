@@ -1,4 +1,0 @@
-Runbook: Fraud Spike
-- Symptom: chargebacks, new device fingerprints
-- Checks: velocity rules, fingerprint lib, feature freshness
-- Actions: temporary limits, retrain risk model, manual review
