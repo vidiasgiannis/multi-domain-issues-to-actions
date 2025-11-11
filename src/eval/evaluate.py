@@ -13,7 +13,7 @@ from src.models.train_baseline import train_baseline
 from src.models.train_svm import train_svm
 from src.models.train_embed_knn import train_embed_knn
 from src.models.train_openai_embed_knn import run_openai_embed_knn
-
+from src.models.train_finetuned_knn import train_finetuned_knn
 
 def log(msg: str):
     now = datetime.now().strftime("%H:%M:%S")
@@ -83,12 +83,38 @@ def run_sbert_knn(X_train, X_test, y_train, y_test, cfg):
     emb_train = embedder.encode(X_train, show_progress_bar=False)
     emb_test = embedder.encode(X_test, show_progress_bar=False)
     knn = train_embed_knn(emb_train, y_train, k=cfg["models"]["knn_k"])
-
+    
     y_pred = knn.predict(emb_test)
     metrics = compute_metrics(y_test, y_pred)
     metrics["model"] = "SBERT_KNN"
     metrics["time_sec"] = round(time.time() - start, 2)
     return save_results("sbert_knn", y_test, y_pred, metrics)
+
+def run_finetuned_minilm_knn(X_train, X_test, y_train, y_test, cfg):
+    """
+    Evaluate the fine-tuned MiniLM model using kNN classifier.
+    """
+    log("Evaluating Fine-Tuned MiniLM + kNN...")
+    start = time.time()
+
+    # --- Train model ---
+    
+    knn, model, emb_train, train_time = train_finetuned_knn(X_train, y_train, cfg)
+
+    # --- Encode test data ---
+    X_test = X_test.astype(str).reset_index(drop=True)
+    y_test = y_test.reset_index(drop=True)
+    emb_test = model.encode(X_test, show_progress_bar=False)
+
+    # --- Predict and evaluate ---
+    y_pred = knn.predict(emb_test)
+
+    metrics = compute_metrics(y_test, y_pred)
+    metrics["model"] = "MiniLM_FineTuned_kNN"
+    metrics["time_sec"] = round(time.time() - start, 2)
+
+    # --- Save results ---
+    return save_results("finetuned_minilm_knn", y_test, y_pred, metrics)
 
 
 def run_openai_knn(X_train, X_test, y_train, y_test, cfg):

@@ -13,3 +13,9 @@ eval:
   random_seed: 42                # Reproducibility
   test_size: 0.2                 # Train/test split ratio
   metrics: ["accuracy", "f1", "precision", "recall"]
+
+fine_tuning:
+  model_name: all-MiniLM-L6-v2   # Model to fine-tune
+  epochs: 3                      # Number of fine-tuning epochs
+  batch_size: 16                 # Mini-batch size
+  output_dir: ../results/models/minilm_finetuned  # Save directory for fine-tuned model

@@ -1,0 +1,2 @@
+accuracy,precision,recall,f1_macro,model,time_sec
+0.845,0.8555607223126405,0.845,0.8466090107610243,MiniLM_FineTuned_kNN,4.46
